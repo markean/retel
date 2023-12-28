@@ -17,10 +17,8 @@ income <- raw |>
     # Needed to maintain the variable name
     as.vector())) |>
   mutate_at(c("mi_1979"), ~ (scale(., center = TRUE, scale = TRUE) |>
-    # Needed to maintain the variable name
     as.vector())) |>
   mutate_at(c("ami"), ~ (scale(., center = TRUE, scale = TRUE) |>
-    # Needed to maintain the variable name
     as.vector()))
 
 usethis::use_data(income, overwrite = TRUE)
