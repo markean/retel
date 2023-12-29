@@ -1,4 +1,4 @@
-#' Median Income for Four-Person Families in the USA
+#' Median Income for 4-Person Families in the USA
 #'
 #' A dataset of median income for 4-person families by state.
 #'

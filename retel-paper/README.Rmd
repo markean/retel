@@ -1,17 +1,28 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # retel
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of retel is to …
+The goal of retel is to ...
 
 ## Installation
 
-You can install the development version of retel from
-[GitHub](https://github.com/) with:
+You can install the development version of retel from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -22,7 +33,7 @@ devtools::install_github("markean/retel")
 
 This is a basic example which shows you how to solve a common problem:
 
-``` r
+```{r example}
 #library(retel)
 ## basic example code
 ```
