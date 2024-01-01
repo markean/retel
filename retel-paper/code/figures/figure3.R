@@ -5,7 +5,7 @@ library(grid)
 library(gridExtra)
 
 # Data
-result <- readRDS("simulations/mb_1/n5s5.rds")
+result <- readRDS("./simulations/mb_1/n5s5.rds")
 df <- as.data.frame(result)
 
 # RETEL_f
