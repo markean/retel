@@ -3,7 +3,7 @@
 \docType{data}
 \name{income}
 \alias{income}
-\title{Median Income for Four-Person Families in the USA}
+\title{Median Income for 4-Person Families in the USA}
 \format{
 A data frame with 51 rows and 6 columns:
 \describe{
