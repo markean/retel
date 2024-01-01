@@ -19,7 +19,7 @@ Bayesian inference.
 
 This repository accompanies the research paper titled ‘Regularized
 Exponentially Tilted Empirical Likelihood for Bayesian Inference,’
-available on [arXiv](https://arxiv.org/abs/2112.09206). The
+available on [arXiv](https://arxiv.org/abs/2312.17015). The
 `retel-paper` folder contains code and additional resources related to
 the paper. This work was supported by the U.S. National Science
 Foundation under Grants
