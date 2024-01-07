@@ -10,9 +10,9 @@ Computes regularized exponentially tilted empirical likelihood for Bayesian infe
 }
 \references{
 Kim E, MacEachern SN, Peruggia M (2023).
-  "Regularized Exponentially Tilted Empirical Likelihood for Bayesian
-  Inference."
-  \doi{10.48550/arXiv.2312.17015}.
+"Regularized Exponentially Tilted Empirical Likelihood for Bayesian
+Inference."
+\doi{10.48550/arXiv.2312.17015}.
 }
 \seealso{
 Useful links:

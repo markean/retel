@@ -6,5 +6,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom Matrix rankMatrix
+#' @importFrom nloptr nloptr
 ## usethis namespace: end
 NULL
