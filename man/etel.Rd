@@ -4,18 +4,27 @@
 \alias{etel}
 \title{Exponentially tilted empirical likelihood}
 \usage{
-etel(g)
+etel(g, opts)
 }
 \arguments{
 \item{g}{A numeric matrix, or an object that can be coerced to a numeric
 matrix. Each row corresponds to an observation of an estimating function.
 The number of rows must be greater than the number of columns.}
+
+\item{opts}{A list with optimization options for \code{\link[=nloptr]{nloptr()}}.}
 }
 \value{
-An object of class?.
+A single numeric of the log-likelihood ratio.
 }
 \description{
 Computes exponentially tilted empirical likelihood.
+}
+\examples{
+set.seed(63456)
+x <- rnorm(100)
+par <- 0
+g <- x - par
+etel(g)
 }
 \references{
 Schennach, SM (2005).
