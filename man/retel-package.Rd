@@ -2,8 +2,8 @@
 % Please edit documentation in R/retel-package.R
 \docType{package}
 \name{retel-package}
-\alias{retel}
 \alias{retel-package}
+\alias{_PACKAGE}
 \title{retel: Regularized Exponentially Tilted Empirical Likelihood}
 \description{
 Computes regularized exponentially tilted empirical likelihood for Bayesian inference. Details of the methods are given in Kim, MacEachern, and Peruggia (2023) \doi{10.48550/arXiv.2312.17015}. This work was supported by the U.S. National Science Foundation under Grants No. SES-1921523 and DMS-2015552.
