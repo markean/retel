@@ -4,7 +4,7 @@
 \alias{retel}
 \title{Regularized exponentially tilted empirical likelihood}
 \usage{
-retel(fn, x, par, mu, Sigma, tau, opts)
+retel(fn, x, par, mu, Sigma, tau, type = "full", opts = NULL)
 }
 \arguments{
 \item{fn}{An estimating function that takes the data \code{x} and parameter value
@@ -15,22 +15,32 @@ value from the corresponding row in \code{x}.}
 matrix. Each row corresponds to an observation. The number of rows must be
 greater than the number of columns.}
 
-\item{par}{A numeric vector of parameter values to be tested. The length of
-the vector must be the same as the number of columns in \code{x}.}
+\item{par}{A numeric vector of parameter values to be tested.}
 
-\item{mu}{A numeric matrix.}
+\item{mu}{A numeric vector of parameters for regularization. See 'Details' for more
+information.}
 
-\item{Sigma}{A numeric matrix.}
+\item{Sigma}{A numeric matrix, or an object that can be coerced to a numeric matrix,
+of parameters for regularization. See 'Details' for more information.}
 
-\item{tau}{A single numeric.}
+\item{tau}{A single numeric parameter for regularization. See 'Details' for more
+information.}
 
-\item{opts}{A list with optimization options for \code{\link[=nloptr]{nloptr()}}.}
+\item{type}{A single character indicating the type of regularized exponentially tilted
+empirical likelihood. It must be either \code{"full"} or \code{"reduced"}. Defaults
+to \code{"full"}.  See 'Details' for more information.}
+
+\item{opts}{An optional list with optimization options for \code{\link[=nloptr]{nloptr()}}.
+Defaults to \code{NULL}.}
 }
 \value{
-A single numeric of the log-likelihood ratio.
+A single numeric value representing the log-likelihood ratio.
 }
 \description{
 Computes regularized exponentially tilted empirical likelihood.
+}
+\details{
+Work in progress.
 }
 \examples{
 set.seed(63456)
@@ -47,6 +57,5 @@ retel(f, x, par, mu, Sigma, tau)
 \references{
 Kim E, MacEachern SN, Peruggia M (2023).
 "Regularized Exponentially Tilted Empirical Likelihood for Bayesian
-Inference."
-\doi{10.48550/arXiv.2312.17015}.
+Inference." \doi{10.48550/arXiv.2312.17015}.
 }

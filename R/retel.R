@@ -2,23 +2,40 @@
 #'
 #' Computes regularized exponentially tilted empirical likelihood.
 #'
-#' @param fn An estimating function that takes the data `x` and parameter value
+#' @param fn
+#'   An estimating function that takes the data `x` and parameter value
 #'   `par` as its arguments, returning a numeric matrix. Each row is the return
 #'   value from the corresponding row in `x`.
-#' @param x A numeric matrix, or an object that can be coerced to a numeric
+#' @param x
+#'   A numeric matrix, or an object that can be coerced to a numeric
 #'   matrix. Each row corresponds to an observation. The number of rows must be
 #'   greater than the number of columns.
-#' @param par A numeric vector of parameter values to be tested. The length of
-#'   the vector must be the same as the number of columns in `x`.
-#' @param mu A numeric matrix.
-#' @param Sigma A numeric matrix.
-#' @param tau A single numeric.
-#' @param opts A list with optimization options for [nloptr()].
-#' @return A single numeric of the log-likelihood ratio.
-#' @references Kim E, MacEachern SN, Peruggia M (2023).
+#' @param par
+#'   A numeric vector of parameter values to be tested.
+#' @param mu
+#'   A numeric vector of parameters for regularization. See 'Details' for more
+#'   information.
+#' @param Sigma
+#'   A numeric matrix, or an object that can be coerced to a numeric matrix,
+#'   of parameters for regularization. See 'Details' for more information.
+#' @param tau
+#'   A single numeric parameter for regularization. See 'Details' for more
+#'   information.
+#' @param type
+#'   A single character indicating the type of regularized exponentially tilted
+#'   empirical likelihood. It must be either `"full"` or `"reduced"`. Defaults
+#'   to `"full"`.  See 'Details' for more information.
+#' @param opts
+#'   An optional list with optimization options for [nloptr()].
+#'   Defaults to `NULL`.
+#' @details
+#'   Work in progress.
+#' @return
+#'   A single numeric value representing the log-likelihood ratio.
+#' @references
+#'   Kim E, MacEachern SN, Peruggia M (2023).
 #'   "Regularized Exponentially Tilted Empirical Likelihood for Bayesian
-#'   Inference."
-#'   \doi{10.48550/arXiv.2312.17015}.
+#'   Inference." \doi{10.48550/arXiv.2312.17015}.
 #' @examples
 #' set.seed(63456)
 #' f <- function(x, par) {
@@ -31,24 +48,60 @@
 #' tau <- 1
 #' retel(f, x, par, mu, Sigma, tau)
 #' @export
-retel <- function(fn, x, par, mu, Sigma, tau, opts) {
-  x <- validate_x(x)
-  par <- validate_par(par)
+retel <- function(fn, x, par, mu, Sigma, tau, type = "full", opts = NULL) {
+  assert_function(fn, args = c("x", "par"), ordered = TRUE, nargs = 2L)
+
+  x <- as.matrix(x, rownames.force = TRUE)
+  assert_matrix(x,
+    mode = "numeric", any.missing = FALSE, all.missing = FALSE, min.rows = 1L,
+    min.cols = 1L
+  )
+  n <- nrow(x)
+
+  assert_numeric(par,
+    finite = TRUE, any.missing = FALSE, all.missing = FALSE, min.len = 1L,
+    typed.missing = TRUE
+  )
+
   g <- fn(x, par)
   g <- as.matrix(g, rownames.force = TRUE)
-  n <- nrow(g)
+  assert_matrix(g,
+    mode = "numeric", any.missing = FALSE, all.missing = FALSE, min.rows = 1L,
+    min.cols = 1L, nrows = n
+  )
   p <- ncol(g)
   stopifnot(
-    "`g` must have at least two observations." = (n >= 2L),
-    "`g` must be a finite numeric matrix." =
-      (isTRUE(is.numeric(g) && all(is.finite(g)))),
-    "`g` must have full column rank." = (isTRUE(n > p && rankMatrix(g) == p))
+    "`fn(x, par)` must produce a numeric matrix with column rank." =
+      (isTRUE(n >= p && rankMatrix(g) == p))
   )
-  if (missing(opts)) {
+
+  assert_numeric(mu,
+    finite = TRUE, any.missing = FALSE, all.missing = FALSE, len = p,
+    typed.missing = TRUE
+  )
+
+  Sigma <- as.matrix(Sigma, rownames.force = TRUE)
+  assert_matrix(Sigma,
+    mode = "numeric", any.missing = FALSE, all.missing = FALSE, nrows = p,
+    ncols = p
+  )
+  stopifnot(
+    "`Sigma` must be a positive definite matrix." =
+      (isTRUE(is.positive.definite(Sigma)))
+  )
+
+  assert_number(tau, lower = 1, finite = TRUE)
+
+  assert_choice(type, c("full", "reduced"))
+
+  if (isTRUE(is.null(opts))) {
     opts <- list("algorithm" = "NLOPT_LD_LBFGS", "xtol_rel" = 1e-06)
+  } else {
+    assert_list(opts)
   }
+
   optim <- nloptr(
-    x0 = rep(0, ncol(g)), eval_f = eval_obj_fn, eval_grad_f = eval_gr_obj_fn,
+    x0 = rep(0, p), eval_f = eval_obj_fn, eval_grad_f = eval_gr_obj_fn,
     opts = opts, g = g, mu = mu, Sigma = Sigma, n = n, tau = tau
   )
   lambda <- optim$solution

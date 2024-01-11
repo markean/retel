@@ -1,6 +1,5 @@
 # Load packages
 library(ggplot2)
-library(melt)
 library(nloptr)
 library(retel)
 opts <- list("algorithm" = "NLOPT_LD_LBFGS", "xtol_rel" = 1e-06)

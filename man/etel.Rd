@@ -4,7 +4,7 @@
 \alias{etel}
 \title{Exponentially tilted empirical likelihood}
 \usage{
-etel(fn, x, par, opts)
+etel(fn, x, par, opts = NULL)
 }
 \arguments{
 \item{fn}{An estimating function that takes the data \code{x} and parameter value
@@ -15,13 +15,13 @@ value from the corresponding row in \code{x}.}
 matrix. Each row corresponds to an observation. The number of rows must be
 greater than the number of columns.}
 
-\item{par}{A numeric vector of parameter values to be tested. The length of
-the vector must be the same as the number of columns in \code{x}.}
+\item{par}{A numeric vector of parameter values to be tested.}
 
-\item{opts}{A list with optimization options for \code{\link[=nloptr]{nloptr()}}.}
+\item{opts}{An optional list with optimization options for \code{\link[=nloptr]{nloptr()}}.
+Defaults to \code{NULL}.}
 }
 \value{
-A single numeric of the log-likelihood ratio.
+A single numeric value representing the log-likelihood ratio.
 }
 \description{
 Computes exponentially tilted empirical likelihood.
@@ -37,6 +37,6 @@ etel(f, x, par)
 }
 \references{
 Schennach, SM (2005).
-"Bayesian exponentially tilted empirical likelihood"
+"Bayesian Exponentially Tilted Empirical Likelihood."
 \emph{Biometrika}, 92, 31--46.
 }

@@ -7,7 +7,14 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom checkmate assert_choice
+#' @importFrom checkmate assert_function
+#' @importFrom checkmate assert_list
+#' @importFrom checkmate assert_matrix
+#' @importFrom checkmate assert_number
+#' @importFrom checkmate assert_numeric
 #' @importFrom Matrix rankMatrix
+#' @importFrom matrixcalc is.positive.definite
 #' @importFrom nloptr nloptr
 ## usethis namespace: end
 NULL

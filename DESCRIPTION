@@ -1,16 +1,16 @@
 Package: retel
 Type: Package
 Title: Regularized Exponentially Tilted Empirical Likelihood
-Version: 0.0.0.9000
+Version: 0.0.0.9100
 Authors@R: c(
     person("Eunseop", "Kim", email = "markean@pm.me", 
             role = c("aut", "cre")),
     person("Steven", "MacEachern", role = c("ctb", "ths")),
     person("Mario", "Peruggia", role = c("ctb", "ths"))
   )
-Description: Computes regularized exponentially tilted empirical likelihood for
-    Bayesian inference. Details of the methods are given in Kim, MacEachern, and
-    Peruggia (2023) <doi:10.48550/arXiv.2312.17015>. This work was supported 
+Description: Implements regularized exponentially tilted empirical likelihood 
+    for Bayesian inference. Details of the methods are given in Kim, MacEachern, 
+    and Peruggia (2023) <doi:10.48550/arXiv.2312.17015>. This work was supported 
     by the U.S. National Science Foundation under Grants No. SES-1921523 and 
     DMS-2015552.
 License: GPL (>= 3)
@@ -25,7 +25,9 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.0
 Imports: 
+    checkmate,
     Matrix,
+    matrixcalc,
     nloptr
