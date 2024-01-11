@@ -9,41 +9,26 @@ opts <- list("algorithm" = "NLOPT_LD_LBFGS", "xtol_rel" = 1e-06)
 x <- c(-2, 2)
 
 # Functions
-d <- function(l, theta) {
-  sum(exp(l * (x - theta)))
+f <- function(x, par) {
+  x - par
 }
-penalty_m <- function(l, pg) {
-  mean(exp(l * pg))
+discrete_obj <- function(l, par, pg) {
+  sum(exp(l * (x - par))) + mean(exp(l * pg))
 }
-penalty <- function(l) {
-  exp(0.5 * l^2)
+gr_discrete_obj <- function(l, par, pg) {
+  sum(exp(l * (x - par)) * (x - par)) + mean(exp(l * pg) * pg)
 }
-discrete_obj <- function(l, theta, pg) {
-  d(l, theta) + penalty_m(l, pg)
-}
-continuous_obj <- function(l, theta) {
-  d(l, theta) + penalty(l)
-}
-gr_discrete_obj <- function(l, theta, pg) {
-  sum(exp(l * (x - theta)) * (x - theta)) + mean(exp(l * pg) * pg)
-}
-gr_continuous_obj <- function(l, theta) {
-  sum(exp(l * (x - theta)) * (x - theta)) + exp(0.5 * l^2) * l
-}
-lambda_WETEL <- function(theta, m) {
+lambda_WETEL <- function(par, m) {
   pg <- qnorm(1:m / (m + 1), mean = 0, sd = 1)
   out <- nloptr(
     x0 = 0, eval_f = discrete_obj, eval_grad_f = gr_discrete_obj, opts = opts,
-    theta = theta, pg = pg
+    par = par, pg = pg
   )
   out$solution
 }
-lambda_RETEL <- function(theta) {
-  out <- nloptr(
-    x0 = 0, eval_f = continuous_obj, eval_grad_f = gr_continuous_obj,
-    opts = opts, theta = theta
-  )
-  out$solution
+lambda_RETEL <- function(par) {
+  out <- retel(f, x, par, 0, 1, 1)
+  attr(out, "optim")$solution
 }
 
 # Convex hull constraint satisfied at 1

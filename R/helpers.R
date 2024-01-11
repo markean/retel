@@ -24,7 +24,7 @@ eval_d_fn <- function(l, g, n, tau) {
 #' @return A single numeric.
 #' @noRd
 eval_p_fn <- function(l, mu, Sigma, n, tau) {
-  tau * exp(as.numeric(l %*% mu) + colSums(mu * (Sigma %*% mu)) / 2) / (n + tau)
+  tau * exp(as.numeric(l %*% mu) + colSums(l * (Sigma %*% l)) / 2) / (n + tau)
 }
 
 #' Exponentially tilted empirical likelihood objective function

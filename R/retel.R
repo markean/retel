@@ -53,7 +53,7 @@ retel <- function(fn, x, par, mu, Sigma, tau, opts) {
   )
   lambda <- optim$solution
   out <- as.numeric(lambda %*% colSums(g)) + as.numeric(lambda %*% mu) +
-    colSums(mu * (Sigma %*% mu)) / 2 -
+    colSums(lambda * (Sigma %*% lambda)) / 2 -
     (n + 1) * log(eval_obj_fn(lambda, g, mu, Sigma, n, tau))
   attributes(out) <- list(optim = optim)
   out
