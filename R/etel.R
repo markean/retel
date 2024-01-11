@@ -42,10 +42,10 @@ etel <- function(fn, x, par, opts) {
   }
   optim <- nloptr(
     x0 = rep(0, ncol(g)), eval_f = eval_d_fn, eval_grad_f = eval_gr_d_fn,
-    opts = opts, g = g, n = n
+    opts = opts, g = g, n = n, tau = 0
   )
   lambda <- optim$solution
-  out <- as.numeric(lambda %*% colSums(g)) - n * log(eval_d_fn(lambda, g, n))
+  out <- as.numeric(lambda %*% colSums(g)) - n * log(eval_d_fn(lambda, g, n, 0))
   attributes(out) <- list(optim = optim)
   out
 }

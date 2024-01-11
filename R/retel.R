@@ -49,13 +49,12 @@ retel <- function(fn, x, par, mu, Sigma, tau, opts) {
   }
   optim <- nloptr(
     x0 = rep(0, ncol(g)), eval_f = eval_obj_fn, eval_grad_f = eval_gr_obj_fn,
-    opts = opts, g = g, mu = mu, Sigma = Sigma, tau = tau, n = n
+    opts = opts, g = g, mu = mu, Sigma = Sigma, n = n, tau = tau
   )
   lambda <- optim$solution
   out <- as.numeric(lambda %*% colSums(g)) + as.numeric(lambda %*% mu) +
     colSums(mu * (Sigma %*% mu)) / 2 -
-    (n + 1) * log(n) + (n + 1) * log(n + tau) -
-    (n + 1) * log(eval_obj_fn(lambda, g, mu, Sigma, tau, n))
+    (n + 1) * log(eval_obj_fn(lambda, g, mu, Sigma, n, tau))
   attributes(out) <- list(optim = optim)
   out
 }

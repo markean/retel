@@ -5,10 +5,11 @@
 #' @param l A numeric vector.
 #' @param g A numeric matrix.
 #' @param n A single integer.
+#' @param tau A single numeric.
 #' @return A single numeric.
 #' @noRd
-eval_d_fn <- function(l, g, n) {
-  sum(exp(g %*% l)) / n
+eval_d_fn <- function(l, g, n, tau) {
+  sum(exp(g %*% l)) / (n + tau)
 }
 
 #' Exponentially tilted empirical likelihood objective function
@@ -18,12 +19,12 @@ eval_d_fn <- function(l, g, n) {
 #' @param l A numeric vector.
 #' @param mu A numeric matrix.
 #' @param Sigma A numeric matrix.
-#' @param tau A single numeric.
 #' @param n A single integer.
+#' @param tau A single numeric.
 #' @return A single numeric.
 #' @noRd
-eval_p_fn <- function(l, mu, Sigma, tau, n) {
-  tau * exp(as.numeric(l %*% mu) + colSums(mu * (Sigma %*% mu)) / 2) / n
+eval_p_fn <- function(l, mu, Sigma, n, tau) {
+  tau * exp(as.numeric(l %*% mu) + colSums(mu * (Sigma %*% mu)) / 2) / (n + tau)
 }
 
 #' Exponentially tilted empirical likelihood objective function
@@ -34,12 +35,12 @@ eval_p_fn <- function(l, mu, Sigma, tau, n) {
 #' @param g A numeric matrix.
 #' @param mu A numeric matrix.
 #' @param Sigma A numeric matrix.
-#' @param tau A single numeric.
 #' @param n A single integer.
+#' @param tau A single numeric.
 #' @return A single numeric.
 #' @noRd
-eval_obj_fn <- function(l, g, mu, Sigma, tau, n) {
-  eval_d_fn(l, g, n) + eval_p_fn(l, mu, Sigma, tau, n)
+eval_obj_fn <- function(l, g, mu, Sigma, n, tau) {
+  eval_d_fn(l, g, n, tau) + eval_p_fn(l, mu, Sigma, n, tau)
 }
 
 #' Gradient of exponentially tilted empirical likelihood objective function
@@ -50,10 +51,11 @@ eval_obj_fn <- function(l, g, mu, Sigma, tau, n) {
 #' @param l A numeric vector.
 #' @param g A numeric matrix.
 #' @param n A single integer.
+#' @param tau A single numeric.
 #' @return A numeric vector.
 #' @noRd
-eval_gr_d_fn <- function(l, g, n) {
-  colSums(as.numeric(exp(g %*% l)) * g) / n
+eval_gr_d_fn <- function(l, g, n, tau) {
+  colSums(as.numeric(exp(g %*% l)) * g) / (n + tau)
 }
 
 #' Gradient of exponentially tilted empirical likelihood objective function
@@ -64,12 +66,12 @@ eval_gr_d_fn <- function(l, g, n) {
 #' @param l A numeric vector.
 #' @param mu A numeric matrix.
 #' @param Sigma A numeric matrix.
-#' @param tau A single numeric.
 #' @param n A single integer.
+#' @param tau A single numeric.
 #' @return A numeric vector.
 #' @noRd
-eval_gr_p_fn <- function(l, mu, Sigma, tau, n) {
-  eval_p_fn(l, mu, Sigma, tau, n) * (mu + as.numeric(Sigma %*% l))
+eval_gr_p_fn <- function(l, mu, Sigma, n, tau) {
+  eval_p_fn(l, mu, Sigma, n, tau) * (mu + as.numeric(Sigma %*% l))
 }
 
 #' Gradient of exponentially tilted empirical likelihood objective function
@@ -81,12 +83,12 @@ eval_gr_p_fn <- function(l, mu, Sigma, tau, n) {
 #' @param g A numeric matrix.
 #' @param mu A numeric matrix.
 #' @param Sigma A numeric matrix.
-#' @param tau A single numeric.
 #' @param n A single integer.
+#' @param tau A single numeric.
 #' @return A numeric vector.
 #' @noRd
-eval_gr_obj_fn <- function(l, g, mu, Sigma, tau, n) {
-  eval_gr_d_fn(l, g, n) + eval_gr_p_fn(l, mu, Sigma, tau, n)
+eval_gr_obj_fn <- function(l, g, mu, Sigma, n, tau) {
+  eval_gr_d_fn(l, g, n, tau) + eval_gr_p_fn(l, mu, Sigma, n, tau)
 }
 
 #' Validate `x`
