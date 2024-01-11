@@ -68,6 +68,7 @@ etel <- function(fn, x, par, opts = NULL) {
     g = g, n = n, tau = 0
   )
   lambda <- optim$solution
+
   out <- as.numeric(lambda %*% colSums(g)) - n * log(eval_d_fn(lambda, g, n, 0))
   attributes(out) <- list(optim = optim)
   out

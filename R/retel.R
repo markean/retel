@@ -105,9 +105,15 @@ retel <- function(fn, x, par, mu, Sigma, tau, type = "full", opts = NULL) {
     opts = opts, g = g, mu = mu, Sigma = Sigma, n = n, tau = tau
   )
   lambda <- optim$solution
-  out <- as.numeric(lambda %*% colSums(g)) + as.numeric(lambda %*% mu) +
-    colSums(lambda * (Sigma %*% lambda)) / 2 -
-    (n + 1) * log(eval_obj_fn(lambda, g, mu, Sigma, n, tau))
+
+  if (isTRUE(type == "full")) {
+    out <- as.numeric(lambda %*% colSums(g)) + as.numeric(lambda %*% mu) +
+      colSums(lambda * (Sigma %*% lambda)) / 2 -
+      (n + 1) * log(eval_obj_fn(lambda, g, mu, Sigma, n, tau))
+  } else {
+    out <- as.numeric(lambda %*% colSums(g)) -
+      n * log(eval_obj_fn(lambda, g, mu, Sigma, n, tau))
+  }
   attributes(out) <- list(optim = optim)
   out
 }
