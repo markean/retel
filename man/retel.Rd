@@ -50,7 +50,7 @@ f <- function(x, par) {
 x <- rnorm(100)
 par <- 0
 mu <- 0
-Sigma <- matrix(rnorm(1), nrow = 1)
+Sigma <- 1
 tau <- 1
 retel(f, x, par, mu, Sigma, tau)
 }

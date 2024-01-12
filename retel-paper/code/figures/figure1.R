@@ -37,6 +37,7 @@ approx <- vapply(round(2^grid), function(k) lambda_WETEL(1, k),
   FUN.VALUE = numeric(1L)
 )
 df <- data.frame(m = grid, lambda = approx)
+# 4 x 3
 ggplot(df) +
   geom_line(aes(m, lambda)) +
   theme(
@@ -72,6 +73,7 @@ approx2 <- vapply(round(2^grid), function(k) lambda_WETEL(-3, k),
   FUN.VALUE = numeric(1L)
 )
 df2 <- data.frame(m = grid, lambda = approx2)
+# 4 x 3
 ggplot(df2) +
   geom_line(aes(m, lambda)) +
   theme(
