@@ -21,11 +21,10 @@ p1 <- ggplot(df, aes(sample = retel1)) +
     legend.position = "bottom",
     legend.text = element_text(size = 10, color = "black"),
     legend.background = element_rect(fill = alpha("white", 0)),
-    # reduce the space between x axis label and legend
+    # Reduce the space between x axis label and legend
     legend.margin = margin(t = -10),
     legend.key = element_rect(fill = alpha("white", 1)),
     legend.title = element_blank(),
-    # title center
     plot.title = element_text(hjust = 0.5)
   ) +
   labs(
@@ -48,11 +47,10 @@ p2 <- ggplot(df, aes(sample = retel2)) +
     legend.position = "bottom",
     legend.text = element_text(size = 10, color = "black"),
     legend.background = element_rect(fill = alpha("white", 0)),
-    # reduce the space between x axis label and legend
+    # Reduce the space between x axis label and legend
     legend.margin = margin(t = -10),
     legend.key = element_rect(fill = alpha("white", 1)),
     legend.title = element_blank(),
-    # title center
     plot.title = element_text(hjust = 0.5)
   ) +
   labs(
@@ -75,11 +73,10 @@ p3 <- ggplot(df, aes(sample = etel)) +
     legend.position = "bottom",
     legend.text = element_text(size = 10, color = "black"),
     legend.background = element_rect(fill = alpha("white", 0)),
-    # reduce the space between x axis label and legend
+    # Reduce the space between x axis label and legend
     legend.margin = margin(t = -10),
     legend.key = element_rect(fill = alpha("white", 1)),
     legend.title = element_blank(),
-    # title center
     plot.title = element_text(hjust = 0.5)
   ) +
   labs(
@@ -102,11 +99,10 @@ p4 <- ggplot(df, aes(sample = aetel)) +
     legend.position = "bottom",
     legend.text = element_text(size = 10, color = "black"),
     legend.background = element_rect(fill = alpha("white", 0)),
-    # reduce the space between x axis label and legend
+    # Reduce the space between x axis label and legend
     legend.margin = margin(t = -10),
     legend.key = element_rect(fill = alpha("white", 1)),
     legend.title = element_blank(),
-    # title center
     plot.title = element_text(hjust = 0.5)
   ) +
   labs(
@@ -124,4 +120,5 @@ y.grob <- textGrob(expression(italic(H) * " quantiles"),
 x.grob <- textGrob(expression(italic(U(0, 1)) * " quantiles"),
   gp = gpar(fontsize = 12)
 )
+# 8 x 3
 grid.arrange(arrangeGrob(plots, left = y.grob, bottom = x.grob))
