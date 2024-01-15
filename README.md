@@ -14,7 +14,7 @@ proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https:
 
 ## Overview
 
-Computes regularized exponentially tilted empirical likelihood for
+Implements regularized exponentially tilted empirical likelihood for
 Bayesian inference.
 
 This repository accompanies the research paper titled ‘Regularized

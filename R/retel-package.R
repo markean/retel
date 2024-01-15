@@ -1,4 +1,3 @@
-#' @aliases retel-package
 #' @references Kim E, MacEachern SN, Peruggia M (2023).
 #'   "Regularized Exponentially Tilted Empirical Likelihood for Bayesian
 #'   Inference."

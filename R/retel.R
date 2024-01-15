@@ -29,7 +29,81 @@
 #'   An optional list with optimization options for [nloptr()].
 #'   Defaults to `NULL`.
 #' @details
-#'   Work in progress.
+#'   Let \eqn{\{\bm{X}_i\}_{i = 1}^n} denote independent \eqn{d_x}-dimensional
+#'   observations from a complete probability space
+#'   \eqn{{(\mathcal{X}, \mathcal{F}, P)}} satisfying the moment condition:
+#'   \deqn{\textnormal{E}_P[\bm{g}(\bm{X}_i, \bm{\theta})] = \bm{0},}
+#'   where \eqn{{\bm{g}}:
+#'   {\mathbb{R}^{d_x} \times \Theta} \mapsto {\mathbb{R}^p}} is an estimating
+#'   function with the true parameter value
+#'   \eqn{{\bm{\theta}_0} \in {\Theta} \subset \mathbb{R}^p}.
+#'
+#'   For a given parameter value \eqn{\bm{\theta}}, regularized exponentially
+#'   tilted empirical likelihood solves the following optimization problem:
+#'   \deqn{
+#'     \min_{\bm{\lambda} \in \mathbb{R}^p}
+#'       \left\{
+#'         d_n\left(\bm{\theta}, \bm{\lambda}\right) +
+#'         p_n\left(\bm{\theta}, \bm{\lambda}\right)
+#'       \right\},
+#'   }
+#'   where
+#'   \deqn{
+#'     d_n\left(\bm{\theta}, \bm{\lambda}\right) =
+#'     \frac{1}{n + \tau_n}
+#'     \sum_{i = 1}^n \exp
+#'       \left(
+#'         \bm{\lambda}^\top \bm{g}\left(\bm{X}_i, \bm{\theta}\right)
+#'       \right)
+#'   }
+#'   and
+#'   \deqn{
+#'     p_n\left(\bm{\theta}, \bm{\lambda}\right) =
+#'     \frac{\tau_n}{n + \tau_n}
+#'     \exp
+#'       \left(
+#'         \bm{\lambda}^\top\bm{\mu}_{n, \bm{\theta}} +
+#'         \frac{1}{2}
+#'         \bm{\lambda}^\top\bm{\Sigma}_{n, \bm{\theta}}\bm{\lambda}
+#'       \right).
+#'   }
+#
+#'   Once we have determined the solution \eqn{{\bm{\lambda}_{RET}}}, we define
+#'   the likelihood ratio function as follows:
+#'   \deqn{
+#'     R_{RET}\left(\bm{\theta}\right) =
+#'     \left(
+#'       \frac{n + \tau_n}{\tau_n}p_c\left(\bm{\theta}\right)\right)
+#'       \prod_{i = 1}^n \left(n + \tau_n\right)p_i\left(\bm{\theta}
+#'     \right),
+#'   }
+#'   where
+#'   \deqn{
+#'     p_i\left(\bm{\theta}\right) =
+#'     \frac{\exp
+#'       \left(
+#'         {\bm{\lambda}_{RET}}^\top\bm{g}\left(\bm{X}_i, \bm{\theta}\right)
+#'       \right)
+#'     }{c_n\left(\bm{\theta}, \bm{\lambda}_{RET}\right)
+#'     } \quad \left(i = 1, \dots, n\right),\quad
+#'     p_c\left(\bm{\theta}\right) =
+#'     \frac{p_n
+#'       \left(\bm{\theta}, \bm{\lambda}_{RET}\right)
+#'     }{c_n\left(\bm{\theta}, \bm{\lambda}_{RET}\right)
+#'     },
+#'   }
+#'   and
+#'   \eqn{
+#'     c_n\left(\bm{\theta}, \bm{\lambda}_{RET}\right) =
+#'     d_n\left(\bm{\theta}, \bm{\lambda}_{RET}\right) +
+#'     p_n\left(\bm{\theta}, \bm{\lambda}_{RET}\right)
+#'   }. The reduced version of the likelihood ratio function is defined as:
+#'   \deqn{
+#'     \widetilde{R}_{RET}\left(\bm{\theta}\right) =
+#'     \prod_{i = 1}^n \left(n + \tau_n\right)p_i\left(\bm{\theta}\right).
+#'   }
+#'   See the references below for more details on derivation, interpretation,
+#'   and properties.
 #' @return
 #'   A single numeric value representing the log-likelihood ratio.
 #' @references
