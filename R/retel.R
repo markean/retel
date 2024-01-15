@@ -67,7 +67,10 @@
 #'         \bm{\lambda}^\top\bm{\Sigma}_{n, \bm{\theta}}\bm{\lambda}
 #'       \right).
 #'   }
-#
+#'   Here, \eqn{{\tau_n} > {0}}, \eqn{\bm{\mu}_{n, \bm{\theta}}},
+#'   \eqn{\bm{\Sigma}_{n, \bm{\theta}}} are all tuning parameters that control
+#'   the strength of \eqn{{p_n(\bm{\theta}, \bm{\lambda})}} as a penalty.
+#'
 #'   Once we have determined the solution \eqn{{\bm{\lambda}_{RET}}}, we define
 #'   the likelihood ratio function as follows:
 #'   \deqn{
@@ -102,6 +105,7 @@
 #'     \widetilde{R}_{RET}\left(\bm{\theta}\right) =
 #'     \prod_{i = 1}^n \left(n + \tau_n\right)p_i\left(\bm{\theta}\right).
 #'   }
+#'
 #'   See the references below for more details on derivation, interpretation,
 #'   and properties.
 #' @return
@@ -125,7 +129,9 @@
 retel <- function(fn, x, par, mu, Sigma, tau, type = "full", opts = NULL) {
   assert_function(fn, args = c("x", "par"), ordered = TRUE, nargs = 2L)
 
-  x <- as.matrix(x, rownames.force = TRUE)
+  if (isFALSE(is.matrix(x))) {
+    x <- as.matrix(x, rownames.force = TRUE)
+  }
   assert_matrix(x,
     mode = "numeric", any.missing = FALSE, all.missing = FALSE, min.rows = 1L,
     min.cols = 1L
@@ -138,7 +144,9 @@ retel <- function(fn, x, par, mu, Sigma, tau, type = "full", opts = NULL) {
   )
 
   g <- fn(x, par)
-  g <- as.matrix(g, rownames.force = TRUE)
+  if (isFALSE(is.matrix(g))) {
+    g <- as.matrix(g, rownames.force = TRUE)
+  }
   assert_matrix(g,
     mode = "numeric", any.missing = FALSE, all.missing = FALSE, min.rows = 1L,
     min.cols = 1L, nrows = n
@@ -154,7 +162,9 @@ retel <- function(fn, x, par, mu, Sigma, tau, type = "full", opts = NULL) {
     typed.missing = TRUE
   )
 
-  Sigma <- as.matrix(Sigma, rownames.force = TRUE)
+  if (isFALSE(is.matrix(Sigma))) {
+    Sigma <- as.matrix(Sigma, rownames.force = TRUE)
+  }
   assert_matrix(Sigma,
     mode = "numeric", any.missing = FALSE, all.missing = FALSE, nrows = p,
     ncols = p

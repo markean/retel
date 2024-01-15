@@ -33,7 +33,9 @@
 etel <- function(fn, x, par, opts = NULL) {
   assert_function(fn, args = c("x", "par"), ordered = TRUE, nargs = 2L)
 
-  x <- as.matrix(x, rownames.force = TRUE)
+  if (isFALSE(is.matrix(x))) {
+    x <- as.matrix(x, rownames.force = TRUE)
+  }
   assert_matrix(x,
     mode = "numeric", any.missing = FALSE, all.missing = FALSE, min.rows = 2L,
     min.cols = 1L
@@ -46,7 +48,9 @@ etel <- function(fn, x, par, opts = NULL) {
   )
 
   g <- fn(x, par)
-  g <- as.matrix(g, rownames.force = TRUE)
+  if (isFALSE(is.matrix(g))) {
+    g <- as.matrix(g, rownames.force = TRUE)
+  }
   assert_matrix(g,
     mode = "numeric", any.missing = FALSE, all.missing = FALSE, min.rows = 2L,
     min.cols = 1L, nrows = n

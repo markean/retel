@@ -78,6 +78,10 @@ and
         \bm{\lambda}^\top\bm{\Sigma}_{n, \bm{\theta}}\bm{\lambda}
       \right).
   }
+Here, \eqn{{\tau_n} > {0}}, \eqn{\bm{\mu}_{n, \bm{\theta}}},
+\eqn{\bm{\Sigma}_{n, \bm{\theta}}} are all tuning parameters that control
+the strength of \eqn{{p_n(\bm{\theta}, \bm{\lambda})}} as a penalty.
+
 Once we have determined the solution \eqn{{\bm{\lambda}_{RET}}}, we define
 the likelihood ratio function as follows:
 \deqn{
@@ -112,6 +116,7 @@ and
     \widetilde{R}_{RET}\left(\bm{\theta}\right) =
     \prod_{i = 1}^n \left(n + \tau_n\right)p_i\left(\bm{\theta}\right).
   }
+
 See the references below for more details on derivation, interpretation,
 and properties.
 }
