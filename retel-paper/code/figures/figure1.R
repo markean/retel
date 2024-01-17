@@ -26,7 +26,7 @@ lambda_WETEL <- function(par, m) {
   out$solution
 }
 lambda_RETEL <- function(par) {
-  out <- retel(f, x, par, 0, 1, 1)
+  out <- retel(f, x, par, mu = 0, Sigma = 1, tau = 1, opts = opts)
   attr(out, "optim")$solution
 }
 

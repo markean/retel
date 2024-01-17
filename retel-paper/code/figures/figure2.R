@@ -18,8 +18,9 @@ f <- function(x, par) {
 grid <- seq(from = -1, to = 1, length.out = 300)
 f_keep_pc <- function(tau) {
   vapply(grid, function(k) {
-    retel(f, x, k,
-      mu = mean(x) - k, Sigma = 1, tau = tau, type = "full", opts = opts
+    retel(f, x,
+      par = k, mu = mean(x) - k, Sigma = 1, tau = tau, type = "full",
+      opts = opts
     )
   },
   FUN.VALUE = numeric(1L)
@@ -27,8 +28,9 @@ f_keep_pc <- function(tau) {
 }
 f_drop_pc <- function(tau) {
   vapply(grid, function(k) {
-    retel(f, x, k,
-      mu = mean(x) - k, Sigma = 1, tau = tau, type = "reduced", opts = opts
+    retel(f, x,
+      par = k, mu = mean(x) - k, Sigma = 1, tau = tau, type = "reduced",
+      opts = opts
     )
   },
   FUN.VALUE = numeric(1L)
