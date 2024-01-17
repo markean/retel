@@ -5,11 +5,11 @@ library(grid)
 library(gridExtra)
 
 # Data
-result <- readRDS("./simulations/mb_1/n5s5.rds")
+result <- readRDS("./simulations/mb/mb_1/n5s5.rds")
 df <- as.data.frame(result)
 
 # RETEL_f
-p1 <- ggplot(df, aes(sample = retel1)) +
+p1 <- ggplot(df, aes(sample = retel_f)) +
   stat_qq(distribution = qunif, size = 0.5) +
   stat_qq_line(distribution = qunif) +
   theme(
@@ -35,7 +35,7 @@ p1 <- ggplot(df, aes(sample = retel1)) +
   scale_x_continuous(breaks = c(0, 0.5, 1))
 
 # RETEL_r
-p2 <- ggplot(df, aes(sample = retel2)) +
+p2 <- ggplot(df, aes(sample = retel_r)) +
   stat_qq(distribution = qunif, size = 0.5) +
   stat_qq_line(distribution = qunif) +
   theme(

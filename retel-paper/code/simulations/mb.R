@@ -24,7 +24,7 @@ l <- 0
 # Grid wing length
 w <- 5
 # Optimization
-opts <- list("algorithm" = "NLOPT_LD_LBFGS", "xtol_rel" = 1e-04)
+opts <- list("algorithm" = "NLOPT_LD_LBFGS")
 
 
 ## 4. Functions
@@ -54,7 +54,8 @@ aetel <- function(theta) {
 }
 # Posterior density functions
 etel_post <- function(theta) {
-  out <- dlogis(theta, location = l, scale = s, log = TRUE) + etel(f, x, theta)
+  out <- dlogis(theta, location = l, scale = s, log = TRUE) +
+    etel(f, x, theta, opts)
   exp(out)
 }
 aetel_post <- function(theta) {
@@ -63,12 +64,12 @@ aetel_post <- function(theta) {
 }
 retel_f_post <- function(theta, tau, mu, sigma) {
   out <- dlogis(theta, location = l, scale = s, log = TRUE) +
-    retel(f, x, theta, mu, sigma, tau, type = "full")
+    retel(f, x, theta, mu, sigma, tau, type = "full", opts = opts)
   exp(out)
 }
 retel_r_post <- function(theta, tau, mu, sigma) {
   out <- dlogis(theta, location = l, scale = s, log = TRUE) +
-    retel(f, x, theta, mu, sigma, tau, type = "reduced")
+    retel(f, x, theta, mu, sigma, tau, type = "reduced", opts = opts)
   exp(out)
 }
 
@@ -81,7 +82,7 @@ cat("< tau =", tau, ">\n")
 cat("< Sample size =", n, ">\n")
 cat("< Scale parameter =", s, ">\n")
 set.seed(847675)
-cl <- makeCluster(4L)
+cl <- makeCluster(24L)
 registerDoParallel(cl)
 result <- foreach(
   i = icount(S), .combine = "rbind", .inorder = F,
@@ -165,13 +166,3 @@ cat(
   "RETEL_f: ", retel_f_ks$p.value, "\n",
   "RETEL_r: ", retel_r_ks$p.value, "\n\n"
 )
-if (all.equal(tau, 1)) {
-  save_dir <- "./simulations/mb_1/"
-  dir.create(save_dir)
-  save_file <- paste0(save_dir, "n", n, "s", s, ".rds")
-} else {
-  save_dir <- "./simulations/mb_logn/"
-  dir.create(save_dir)
-  save_file <- paste0(save_dir, "n", n, "s", s, ".rds")
-}
-saveRDS(result, file = save_file)

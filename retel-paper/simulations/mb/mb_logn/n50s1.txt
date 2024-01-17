@@ -1,0 +1,12 @@
+< Simulation replications = 10000 >
+< Length of grid = 10 >
+< Number of points in grid = 1000 >
+< tau = 3.912023 >
+< Sample size = 50 >
+< Scale parameter = 1 >
+KS test p-values: 
+ ETEL:    0.2209268 
+ AETEL:   0.4254835 
+ RETEL_f:  0.3029305 
+ RETEL_r:  0.3030135 
+
