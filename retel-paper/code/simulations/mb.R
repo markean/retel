@@ -55,7 +55,7 @@ aetel <- function(theta) {
 # Posterior density functions
 etel_post <- function(theta) {
   out <- dlogis(theta, location = l, scale = s, log = TRUE) +
-    etel(f, x, theta, opts)
+    etel(f, x, theta)
   exp(out)
 }
 aetel_post <- function(theta) {
@@ -64,18 +64,18 @@ aetel_post <- function(theta) {
 }
 retel_f_post <- function(theta, tau, mu, sigma) {
   out <- dlogis(theta, location = l, scale = s, log = TRUE) +
-    retel(f, x, theta, mu, sigma, tau, type = "full", opts = opts)
+    retel(f, x, theta, mu, sigma, tau, type = "full")
   exp(out)
 }
 retel_r_post <- function(theta, tau, mu, sigma) {
   out <- dlogis(theta, location = l, scale = s, log = TRUE) +
-    retel(f, x, theta, mu, sigma, tau, type = "reduced", opts = opts)
+    retel(f, x, theta, mu, sigma, tau, type = "reduced")
   exp(out)
 }
 
 
 ## 5. Simulations
-cat("\n< Simulation replications =", S, ">\n")
+cat("< Simulation replications =", S, ">\n")
 cat("< Length of grid =", 2 * w, ">\n")
 cat("< Number of points in grid =", 1000L, ">\n")
 cat("< tau =", tau, ">\n")
@@ -107,9 +107,7 @@ result <- foreach(
   retel_f_post_density_approx <- splinefun(
     grid_coarse,
     vapply(grid_coarse, function(k) {
-      retel_f_post(k,
-        tau = tau, mu = mean(x) - k, sigma = 1
-      )
+      retel_f_post(k, tau = tau, mu = mean(x) - k, sigma = 1)
     },
     FUN.VALUE = numeric(1L)
     )
@@ -117,9 +115,7 @@ result <- foreach(
   retel_r_post_density_approx <- splinefun(
     grid_coarse,
     vapply(grid_coarse, function(k) {
-      retel_r_post(k,
-        tau = tau, mu = mean(x) - k, sigma = 1
-      )
+      retel_r_post(k, tau = tau, mu = mean(x) - k, sigma = 1)
     },
     FUN.VALUE = numeric(1L)
     )
