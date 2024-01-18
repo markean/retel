@@ -32,7 +32,7 @@ lambda_RETEL <- function(par) {
 
 # Convex hull constraint satisfied at 1
 target <- lambda_RETEL(1)
-grid <- seq(from = 5, to = 20, length.out = 100)
+grid <- seq(from = 5, to = 20, length.out = 100L)
 approx <- vapply(round(2^grid), function(k) lambda_WETEL(1, k),
   FUN.VALUE = numeric(1L)
 )
@@ -68,7 +68,7 @@ ggplot(df) +
 
 # Convex hull constraint violated at 3
 target2 <- lambda_RETEL(-3)
-grid <- seq(from = 5, to = 20, length.out = 100)
+grid <- seq(from = 5, to = 20, length.out = 100L)
 approx2 <- vapply(round(2^grid), function(k) lambda_WETEL(-3, k),
   FUN.VALUE = numeric(1L)
 )

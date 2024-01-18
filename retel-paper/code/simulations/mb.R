@@ -85,7 +85,7 @@ set.seed(847675)
 cl <- makeCluster(24L)
 registerDoParallel(cl)
 result <- foreach(
-  i = icount(S), .combine = "rbind", .inorder = F,
+  i = icount(S), .combine = "rbind", .inorder = FALSE,
   .packages = c("nloptr", "retel")
 ) %dorng% {
   # Sample theta from prior

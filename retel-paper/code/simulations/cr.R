@@ -11,7 +11,7 @@ library(retel)
 # Prior location
 l <- 0
 # Sample size
-n <- 5
+n <- 5L
 # Prior scale
 s <- 0.5
 
@@ -86,7 +86,7 @@ set.seed(847675)
 cl <- makeCluster(24L)
 registerDoParallel(cl)
 result <- foreach(
-  i = icount(S), .combine = "rbind", .inorder = F,
+  i = icount(S), .combine = "rbind", .inorder = FALSE,
   .packages = c("nloptr", "retel")
 ) %dorng% {
   # Sample data

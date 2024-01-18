@@ -3,9 +3,11 @@ library(cowplot)
 library(ggplot2)
 library(grid)
 library(gridExtra)
+suppressMessages(library(here))
+suppressMessages(here::i_am("code/figures/figure3.R"))
 
 # Data
-result <- readRDS("./simulations/mb/mb_1/n5s5.rds")
+result <- readRDS(here::here("simulations/mb/mb_1/n5s5.rds"))
 df <- as.data.frame(result)
 
 # RETEL_f

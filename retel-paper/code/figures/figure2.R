@@ -6,7 +6,6 @@ library(retel)
 opts <- list("algorithm" = "NLOPT_LD_LBFGS", "xtol_rel" = 1e-06)
 
 # Data
-n <- 1
 x <- 0
 
 # Functions
@@ -15,7 +14,7 @@ f <- function(x, par) {
 }
 
 # Grid
-grid <- seq(from = -1, to = 1, length.out = 300)
+grid <- seq(from = -1, to = 1, length.out = 300L)
 f_keep_pc <- function(tau) {
   vapply(grid, function(k) {
     retel(f, x,

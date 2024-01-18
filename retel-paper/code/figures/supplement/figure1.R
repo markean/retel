@@ -3,20 +3,22 @@ library(cowplot)
 library(ggplot2)
 library(grid)
 library(gridExtra)
+suppressMessages(library(here))
+suppressMessages(here::i_am("code/figures/supplement/figure1.R"))
 
 
 ## Load data
 df_tau1_n5s1 <-
-  readRDS("./simulations/mb/mb_1/n5s1.rds") |>
+  readRDS(here::here("simulations/mb/mb_1/n5s1.rds")) |>
   as.data.frame()
 df_tau1_n20s1 <-
-  readRDS("./simulations/mb/mb_1/n20s1.rds") |>
+  readRDS(here::here("simulations/mb/mb_1/n20s1.rds")) |>
   as.data.frame()
 df_tau1_n50s1 <-
-  readRDS("./simulations/mb/mb_1/n50s1.rds") |>
+  readRDS(here::here("simulations/mb/mb_1/n50s1.rds")) |>
   as.data.frame()
 df_tau1_n100s1 <-
-  readRDS("./simulations/mb/mb_1/n100s1.rds") |>
+  readRDS(here::here("simulations/mb/mb_1/n100s1.rds")) |>
   as.data.frame()
 
 
