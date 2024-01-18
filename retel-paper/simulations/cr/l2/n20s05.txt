@@ -1,0 +1,17 @@
+< Simulation replications = 10000 >
+< Length of grid = 10 >
+< Number of points in grid = 1000 >
+< tau = 2.995732 >
+< Location parameter = 2 >
+< Sample size = 20 >
+< Scale parameter = 0.5 >
+
+ETEL coverage rate:     0.9069 
+ETEL interval length:   0.8185605 (0.0014)
+AETEL coverage rate:    0.9418 
+AETEL interval length:  1.528744 (0.0062)
+RETEL_f coverage rate:   0.9156 
+RETEL_f interval length: 0.8339833 (0.0011)
+RETEL_r coverage rate:   0.9141 
+RETEL_r interval length: 0.8319881 (0.0012)
+

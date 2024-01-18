@@ -20,9 +20,7 @@ s <- 0.5
 # Tau
 tau <- log(n)
 # Simulation replications
-S <- 1e+02L
-# Prior location
-l <- 0
+S <- 1e+04L
 # Grid wing length
 w <- 5
 # Optimization
@@ -142,7 +140,7 @@ result <- foreach(
   retel_r_ci_lower <- grid[which(retel_r_post_cumsum >= 0.025)[1L]]
   retel_r_ci_upper <- grid[which(retel_r_post_cumsum >= 0.975)[1L] - 1L]
 
-  # Result
+  # Results
   etel_ci_length <- etel_ci_upper - etel_ci_lower
   aetel_ci_length <- aetel_ci_upper - aetel_ci_lower
   retel_f_ci_length <- retel_f_ci_upper - retel_f_ci_lower
@@ -190,18 +188,3 @@ cat("RETEL_r interval length: ",
   round(sd(result[, "retel_r_length"]) / sqrt(S), 4L), ")", "\n\n",
   sep = ""
 )
-if (isTRUE(all.equal(s, 0.5))) {
-  s <- "05"
-} else {
-  s <- as.character(s)
-}
-if (isTRUE(all.equal(l, 0))) {
-  save_dir <- "./simulations/cr/l0/"
-  dir.create(save_dir)
-  save_file <- paste0(save_dir, "n", n, "s", s, ".rds")
-} else {
-  save_dir <- "./simulations/cr/l2/"
-  dir.create(save_dir)
-  save_file <- paste0(save_dir, "n", n, "s", s, ".rds")
-}
-saveRDS(result, file = save_file)
