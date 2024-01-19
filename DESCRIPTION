@@ -1,7 +1,7 @@
 Package: retel
 Type: Package
 Title: Regularized Exponentially Tilted Empirical Likelihood
-Version: 0.0.0.9601
+Version: 0.0.0.9602
 Authors@R: c(
     person("Eunseop", "Kim", email = "markean@pm.me", 
             role = c("aut", "cre")),

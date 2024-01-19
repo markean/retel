@@ -1,0 +1,9 @@
+< Method = EL>
+< Simulation replications = 1000 >
+< MCMC runs = 10000 >
+< n = 6 >
+Expected KL:     0.8832214 (0.0021)
+mu psrf:         1.007572 (0.0003)
+theta1 psrf:     1.005733 (0.0002)
+theta2 psrf:     1.005839 (0.0003)
+Acceptance rate: 0.2946878 (0.002)
