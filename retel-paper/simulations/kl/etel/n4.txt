@@ -1,0 +1,9 @@
+< Method = ETEL>
+< Simulation replications = 1000 >
+< MCMC runs = 10000 >
+< n = 4 >
+Expected KL:     0.8884114 (0.0026)
+mu psrf:         1.010288 (0.0005)
+theta1 psrf:     1.006705 (0.0004)
+theta2 psrf:     1.006802 (0.0003)
+Acceptance rate: 0.2700289 (0.0027)
