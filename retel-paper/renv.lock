@@ -131,6 +131,19 @@
       ],
       "Hash": "4f57884290cc75ab22f4af9e9d4ca862"
     },
+    "actuar": {
+      "Package": "actuar",
+      "Version": "3.3-4",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "expint",
+        "graphics",
+        "stats"
+      ],
+      "Hash": "31c925f608675e450657c4622bd68b68"
+    },
     "backports": {
       "Package": "backports",
       "Version": "1.4.1",
@@ -502,6 +515,16 @@
         "methods"
       ],
       "Hash": "daf4a1246be12c1fa8c7705a0935c1a0"
+    },
+    "expint": {
+      "Package": "expint",
+      "Version": "0.1-8",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "57208be351e926869d7121aca0c80a9b"
     },
     "fansi": {
       "Package": "fansi",
