@@ -1,30 +1,125 @@
 # Load packages
 library(ggplot2)
+suppressMessages(library(here))
+suppressMessages(i_am("code/figures/figure4a.R"))
 
 # Data
 df <- data.frame(
-  method = rep(c("retel1", "retel2", "el", "etel"), each = 5L),
+  method = rep(c("retel_f", "retel_r", "el", "etel"), each = 5L),
   n = rep(c(2L, 4L, 6L, 8L, 10L), 4L)
 )
-kl_retel1 <- c(0.8609873, 0.8721041, 0.8856395, 0.8961443, 0.8989103)
-kl_retel2 <- c(0.8636815, 0.8822516, 0.8865799, 0.8969079, 0.9007792)
-kl_el <- c(0.9144397, 0.8846304, 0.8832214, 0.8858823, 0.8842803)
-kl_etel <- c(0.9173491, 0.8884114, 0.8868945, 0.8827214, 0.8833329)
-se_retel1 <- c(0.0039, 0.0024, 0.0023, 0.0021, 0.0021)
-se_retel2 <- c(0.0038, 0.0025, 0.0022, 0.0021, 0.0022)
-se_el <- c(0.0045, 0.0025, 0.0021, 0.0019, 0.0017)
-se_etel <- c(0.0056, 0.0026, 0.0022, 0.0019, 0.0016)
-df$kl <- c(kl_retel1, kl_retel2, kl_el, kl_etel)
-df$se <- c(se_retel1, se_retel2, se_el, se_etel)
+ekl_retel_f <- c(
+  readRDS(here("simulations/kl/retel_f/n2.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n4.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n6.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n8.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n10.rds"))[, "kl"] |>
+    mean(na.rm = TRUE)
+)
+ekl_retel_r <- c(
+  readRDS(here("simulations/kl/retel_r/n2.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n4.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n6.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n8.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n10.rds"))[, "kl"] |>
+    mean(na.rm = TRUE)
+)
+ekl_el <- c(
+  readRDS(here("simulations/kl/el/n2.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n4.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n6.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n8.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n10.rds"))[, "kl"] |>
+    mean(na.rm = TRUE)
+)
+ekl_etel <- c(
+  readRDS(here("simulations/kl/etel/n2.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n4.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n6.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n8.rds"))[, "kl"] |>
+    mean(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n10.rds"))[, "kl"] |>
+    mean(na.rm = TRUE)
+)
+se_retel_f <- (c(
+  readRDS(here("simulations/kl/retel_f/n2.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n4.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n6.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n8.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_f/n10.rds"))[, "kl"] |>
+    sd(na.rm = TRUE)
+) / sqrt(1000L)) |>
+  round(4L)
+se_retel_r <- (c(
+  readRDS(here("simulations/kl/retel_r/n2.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n4.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n6.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n8.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/retel_r/n10.rds"))[, "kl"] |>
+    sd(na.rm = TRUE)
+) / sqrt(1000L)) |>
+  round(4L)
+se_el <- (c(
+  readRDS(here("simulations/kl/el/n2.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n4.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n6.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n8.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/el/n10.rds"))[, "kl"] |>
+    sd(na.rm = TRUE)
+) / sqrt(1000L)) |>
+  round(4L)
+se_etel <- (c(
+  readRDS(here("simulations/kl/etel/n2.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n4.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n6.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n8.rds"))[, "kl"] |>
+    sd(na.rm = TRUE),
+  readRDS(here("simulations/kl/etel/n10.rds"))[, "kl"] |>
+    sd(na.rm = TRUE)
+) / sqrt(1000L)) |>
+  round(4L)
+df$ekl <- c(ekl_retel_f, ekl_retel_r, ekl_el, ekl_etel)
+df$se <- c(se_retel_f, se_retel_r, se_el, se_etel)
 
 # Plot
+# 4 x 3
 legend_labels <- c(
   expression(RETEL[italic(f)]), expression(RETEL[italic(r)]), "EL", "ETEL"
 )
-ggplot(df, aes(n, kl, color = method, group = method, linetype = method)) +
+ggplot(df, aes(n, ekl, color = method, group = method, linetype = method)) +
   geom_line() +
   geom_point(aes(shape = method)) +
-  geom_errorbar(aes(ymin = kl - se, ymax = kl + se),
+  geom_errorbar(aes(ymin = ekl - se, ymax = ekl + se),
     width = 0.2,
     position = position_dodge(0.15)
   ) +
@@ -47,16 +142,16 @@ ggplot(df, aes(n, kl, color = method, group = method, linetype = method)) +
   ) +
   scale_colour_manual(
     labels = legend_labels,
-    breaks = c("retel1", "retel2", "el", "etel"),
-    values = c("black", "red", "blue", "green")
+    values = c("black", "red", "blue", "green"),
+    breaks = c("retel_f", "retel_r", "el", "etel")
   ) +
   scale_linetype_manual(
     labels = legend_labels,
-    breaks = c("retel1", "retel2", "el", "etel"),
-    values = c("solid", "dashed", "dotdash", "twodash")
+    values = c("solid", "dashed", "dotdash", "twodash"),
+    breaks = c("retel_f", "retel_r", "el", "etel")
   ) +
   scale_shape_manual(
     labels = legend_labels,
-    breaks = c("retel1", "retel2", "el", "etel"),
-    values = c(15, 16, 2, 5)
+    values = c(15, 16, 2, 5),
+    breaks = c("retel_f", "retel_r", "el", "etel")
   )

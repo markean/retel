@@ -4,21 +4,21 @@ library(ggplot2)
 library(grid)
 library(gridExtra)
 suppressMessages(library(here))
-suppressMessages(here::i_am("code/figures/supplement/figure3.R"))
+suppressMessages(i_am("code/figures/supplement/figure3.R"))
 
 
 ## Load data
 df_taulogn_n5s1 <-
-  readRDS(here::here("simulations/mb/mb_logn/n5s1.rds")) |>
+  readRDS(here("simulations/mb/mb_logn/n5s1.rds")) |>
   as.data.frame()
 df_taulogn_n20s1 <-
-  readRDS(here::here("simulations/mb/mb_logn/n20s1.rds")) |>
+  readRDS(here("simulations/mb/mb_logn/n20s1.rds")) |>
   as.data.frame()
 df_taulogn_n50s1 <-
-  readRDS(here::here("simulations/mb/mb_logn/n50s1.rds")) |>
+  readRDS(here("simulations/mb/mb_logn/n50s1.rds")) |>
   as.data.frame()
 df_taulogn_n100s1 <-
-  readRDS(here::here("simulations/mb/mb_logn/n100s1.rds")) |>
+  readRDS(here("simulations/mb/mb_logn/n100s1.rds")) |>
   as.data.frame()
 
 
