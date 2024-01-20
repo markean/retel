@@ -1,0 +1,9 @@
+< Method = RETEL_r>
+< Simulation replications = 1000 >
+< MCMC runs = 10000 >
+< n = 6 >
+Expected KL:     0.8865799 (0.0022)
+mu psrf:         1.034016 (0.0014)
+theta1 psrf:     1.004519 (0.0002)
+theta2 psrf:     1.004325 (0.0002)
+Acceptance rate: 0.2609866 (0.0009)
