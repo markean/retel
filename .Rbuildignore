@@ -9,3 +9,4 @@
 ^codemeta\.json$
 ^retel-paper$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
