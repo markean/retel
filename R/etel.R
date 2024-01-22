@@ -69,7 +69,7 @@ etel <- function(fn, x, par, opts = NULL) {
   )
 
   if (isTRUE(is.null(opts))) {
-    opts <- list("algorithm" = "NLOPT_LD_LBFGS")
+    opts <- list("algorithm" = "NLOPT_LD_LBFGS", "xtol_rel" = 1e-04)
   } else {
     assert_list(opts)
   }

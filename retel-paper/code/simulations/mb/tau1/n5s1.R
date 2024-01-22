@@ -24,7 +24,7 @@ l <- 0
 # Grid wing length
 w <- 5
 # Optimization
-opts <- list("algorithm" = "NLOPT_LD_LBFGS")
+opts <- list("algorithm" = "NLOPT_LD_LBFGS", "xtol_rel" = 1e-04)
 
 
 ## 4. Functions

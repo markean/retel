@@ -8,3 +8,4 @@
 ^\.github$
 ^codemeta\.json$
 ^retel-paper$
+^cran-comments\.md$
