@@ -2,12 +2,12 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "retel",
-  "description": "Computes regularized exponentially tilted empirical likelihood for Bayesian inference. Details of the methods are given in Kim, MacEachern, and Peruggia (2023) <doi:10.48550/arXiv.2112.09206>. This work was supported by the U.S. National Science Foundation under Grants No. SES-1921523 and DMS-2015552.",
+  "description": "Implements the regularized exponentially tilted empirical likelihood method. Details of the methods are given in Kim, MacEachern, and Peruggia (2023) <doi:10.48550/arXiv.2312.17015>. This work was supported by the U.S. National Science Foundation under Grants No. SES-1921523 and DMS-2015552.",
   "name": "retel: Regularized Exponentially Tilted Empirical Likelihood",
   "codeRepository": "https://github.com/markean/retel",
   "issueTracker": "https://github.com/markean/retel/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.0.9000",
+  "version": "0.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -42,6 +42,14 @@
       "@type": "Person",
       "givenName": "Mario",
       "familyName": "Peruggia"
+    }
+  ],
+  "copyrightHolder": [
+    {
+      "@type": "Person",
+      "givenName": "Eunseop",
+      "familyName": "Kim",
+      "email": "markean@pm.me"
     }
   ],
   "maintainer": [
@@ -85,11 +93,60 @@
       "name": "R",
       "version": ">= 4.1.0"
     },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "checkmate",
+      "name": "checkmate",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=checkmate"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "Matrix",
+      "name": "Matrix",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=Matrix"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
+      "identifier": "matrixcalc",
+      "name": "matrixcalc",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=matrixcalc"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
+      "identifier": "nloptr",
+      "name": "nloptr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=nloptr"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "2481.81KB",
+  "fileSize": "604960.942KB",
+  "releaseNotes": "https://github.com/markean/retel/blob/master/NEWS.md",
   "readme": "https://github.com/markean/retel/blob/main/README.md",
   "contIntegration": "https://github.com/markean/retel/actions/workflows/R-CMD-check.yaml",
-  "developmentStatus": "https://www.repostatus.org/#concept",
+  "developmentStatus": "https://www.repostatus.org/#wip",
   "keywords": ["r", "r-package", "rstats"]
 }
