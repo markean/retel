@@ -115,16 +115,25 @@
 #'   "Regularized Exponentially Tilted Empirical Likelihood for Bayesian
 #'   Inference." \doi{10.48550/arXiv.2312.17015}.
 #' @examples
+#' # Generate data
 #' set.seed(63456)
-#' f <- function(x, par) {
+#' x <- rnorm(100)
+#'
+#' # Define an estimating function (ex. mean)
+#' fn <- function(x, par) {
 #'   x - par
 #' }
-#' x <- rnorm(100)
+#'
+#' # Set parameter value
 #' par <- 0
+#'
+#' # Set regularization parameters
 #' mu <- 0
 #' Sigma <- 1
 #' tau <- 1
-#' retel(f, x, par, mu, Sigma, tau)
+#'
+#' # Call the retel function
+#' retel(fn, x, par, mu, Sigma, tau)
 #' @export
 retel <- function(fn, x, par, mu, Sigma, tau, type = "full", opts = NULL) {
   assert_function(fn, args = c("x", "par"), ordered = TRUE, nargs = 2L)

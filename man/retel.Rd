@@ -121,16 +121,25 @@ See the references below for more details on derivation, interpretation,
 and properties.
 }
 \examples{
+# Generate data
 set.seed(63456)
-f <- function(x, par) {
+x <- rnorm(100)
+
+# Define an estimating function (ex. mean)
+fn <- function(x, par) {
   x - par
 }
-x <- rnorm(100)
+
+# Set parameter value
 par <- 0
+
+# Set regularization parameters
 mu <- 0
 Sigma <- 1
 tau <- 1
-retel(f, x, par, mu, Sigma, tau)
+
+# Call the retel function
+retel(fn, x, par, mu, Sigma, tau)
 }
 \references{
 Kim E, MacEachern SN, Peruggia M (2023).

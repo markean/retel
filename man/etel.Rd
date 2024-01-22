@@ -27,13 +27,20 @@ A single numeric value representing the log-likelihood ratio.
 Computes exponentially tilted empirical likelihood.
 }
 \examples{
+# Generate data
 set.seed(63456)
-f <- function(x, par) {
+x <- rnorm(100)
+
+# Define an estimating function (ex. mean)
+fn <- function(x, par) {
   x - par
 }
-x <- rnorm(100)
+
+# Set parameter value
 par <- 0
-etel(f, x, par)
+
+# Call the etel function
+etel(fn, x, par)
 }
 \references{
 Schennach, SM (2005).

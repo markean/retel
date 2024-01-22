@@ -22,13 +22,20 @@
 #'   "Bayesian Exponentially Tilted Empirical Likelihood."
 #'   \emph{Biometrika}, 92, 31--46.
 #' @examples
+#' # Generate data
 #' set.seed(63456)
-#' f <- function(x, par) {
+#' x <- rnorm(100)
+#'
+#' # Define an estimating function (ex. mean)
+#' fn <- function(x, par) {
 #'   x - par
 #' }
-#' x <- rnorm(100)
+#'
+#' # Set parameter value
 #' par <- 0
-#' etel(f, x, par)
+#'
+#' # Call the etel function
+#' etel(fn, x, par)
 #' @export
 etel <- function(fn, x, par, opts = NULL) {
   assert_function(fn, args = c("x", "par"), ordered = TRUE, nargs = 2L)

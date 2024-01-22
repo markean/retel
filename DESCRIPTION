@@ -1,18 +1,17 @@
 Package: retel
 Type: Package
 Title: Regularized Exponentially Tilted Empirical Likelihood
-Version: 0.0.0.9704
+Version: 0.0.0.9705
 Authors@R: c(
     person("Eunseop", "Kim", email = "markean@pm.me", 
-            role = c("aut", "cre")),
+            role = c("aut", "cph", "cre")),
     person("Steven", "MacEachern", role = c("ctb", "ths")),
     person("Mario", "Peruggia", role = c("ctb", "ths"))
   )
 Description: Implements regularized exponentially tilted empirical likelihood 
-    for Bayesian inference. Details of the methods are given in Kim, MacEachern, 
-    and Peruggia (2023) <doi:10.48550/arXiv.2312.17015>. This work was supported 
-    by the U.S. National Science Foundation under Grants No. SES-1921523 and 
-    DMS-2015552.
+    methods. Details of the methods are given in Kim, MacEachern, and Peruggia 
+    (2023) <doi:10.48550/arXiv.2312.17015>. This work was supported by the U.S. 
+    National Science Foundation under Grants No. SES-1921523 and DMS-2015552.
 License: GPL (>= 3)
 URL: https://github.com/markean/retel
 BugReports: https://github.com/markean/retel/issues
