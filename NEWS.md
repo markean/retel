@@ -1,5 +1,3 @@
-# retel (development version)
-
-
 # retel 0.1.0
-* Initial release.
+
+* Initial release on CRAN.

@@ -14,13 +14,21 @@ knitr::opts_chunk$set(
 ```
 
 # retel
+
 <!-- badges: start -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![R-CMD-check](https://github.com/markean/retel/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/markean/retel/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Overview
-Implements regularized exponentially tilted empirical likelihood for Bayesian inference.
+
+retel implements the regularized exponentially tilted empirical likelihood method.
+The proposed method removes the convex hull constraint using a novel regularization technique, providing a suitable pseudo-likelihood for Bayesian inference.
+
+The following functions enable users to set estimating functions by providing data and parameters:
+
+* `etel()` computes exponentially tilted empirical likelihood without regularization.
+* `retel()` computes regularized exponentially tilted empirical likelihood with regularization parameters.
 
 This repository accompanies the research paper titled 'Regularized Exponentially Tilted Empirical Likelihood for Bayesian Inference,' available on [arXiv](https://arxiv.org/abs/2312.17015).
 The `retel-paper` folder contains code and additional resources related to the paper.
@@ -28,8 +36,45 @@ This work was supported by the U.S. National Science Foundation under Grants No.
 
 
 ## Installation
-You can install the development version of retel from [GitHub](https://github.com/) with:
-``` r
-# install.packages("devtools")
-devtools::install_github("markean/retel")
+
+You can install the latest stable release of retel from CRAN.
+
+```{r, eval = FALSE}
+install.packages("retel")
+```
+
+### Development version
+
+You can install the development version of retel from GitHub.
+
+```{r, eval = FALSE}
+# install.packages("pak")
+pak::pak("markean/retel")
+```
+
+## Usage
+
+```{r, message = FALSE}
+library(retel)
+
+# Generate data
+set.seed(63456)
+x <- rnorm(100)
+
+# Define an estimating function (ex. mean)
+fn <- function(x, par) {
+  x - par
+}
+
+# Set parameter value
+par <- 0
+
+# Set regularization parameters
+mu <- 0
+Sigma <- 1
+tau <- 1
+
+# Call the retel function to compute the log-likelihood ratio. The return value
+# contains the optimization results as the attribute 'optim'.
+retel(fn, x, par, mu, Sigma, tau)
 ```

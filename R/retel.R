@@ -109,7 +109,8 @@
 #'   See the references below for more details on derivation, interpretation,
 #'   and properties.
 #' @return
-#'   A single numeric value representing the log-likelihood ratio.
+#'   A single numeric value representing the log-likelihood ratio. It contains
+#'   the optimization results as the attribute `optim`.
 #' @references
 #'   Kim E, MacEachern SN, Peruggia M (2023).
 #'   "Regularized Exponentially Tilted Empirical Likelihood for Bayesian

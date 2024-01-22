@@ -16,7 +16,8 @@
 #'   An optional list with optimization options for [nloptr()].
 #'   Defaults to `NULL`.
 #' @return
-#'   A single numeric value representing the log-likelihood ratio.
+#'   A single numeric value representing the log-likelihood ratio. It contains
+#'   the optimization results as the attribute `optim`.
 #' @references
 #'   Schennach, SM (2005).
 #'   "Bayesian Exponentially Tilted Empirical Likelihood."
