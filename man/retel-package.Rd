@@ -5,7 +5,7 @@
 \alias{retel-package}
 \title{retel: Regularized Exponentially Tilted Empirical Likelihood}
 \description{
-Implements the regularized exponentially tilted empirical likelihood method. Details of the methods are given in Kim, MacEachern, and Peruggia (2023) \doi{10.48550/arXiv.2312.17015}. This work was supported by the U.S. National Science Foundation under Grants No. SES-1921523 and DMS-2015552.
+Implements the regularized exponentially tilted empirical likelihood method. Details of the method are given in Kim, MacEachern, and Peruggia (2023) \doi{10.48550/arXiv.2312.17015}. This work was supported by the U.S. National Science Foundation under Grants No. SES-1921523 and DMS-2015552.
 }
 \references{
 Kim E, MacEachern SN, Peruggia M (2023).
