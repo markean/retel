@@ -1236,13 +1236,8 @@
     "retel": {
       "Package": "retel",
       "Version": "0.1.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "markean",
-      "RemoteRepo": "retel",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "df36eeba74543a30850940129694a06dd976dd03",
-      "RemoteHost": "api.github.com",
+      "Source": "Repository",
+      "Repository": "CRAN",
       "Requirements": [
         "Matrix",
         "R",
@@ -1250,7 +1245,7 @@
         "matrixcalc",
         "nloptr"
       ],
-      "Hash": "6e15addb6ddddfc7c8ef20dc027a212e"
+      "Hash": "ebab6ad44ec41ef703a3f43cb73e87c2"
     },
     "rlang": {
       "Package": "rlang",

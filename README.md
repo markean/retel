@@ -29,9 +29,8 @@ providing data and parameters:
 This repository accompanies the research paper titled ‘Regularized
 Exponentially Tilted Empirical Likelihood for Bayesian Inference,’
 available on [arXiv](https://arxiv.org/abs/2312.17015). The
-`retel-paper` folder contains code and additional resources related to
-the paper. This work was supported by the U.S. National Science
-Foundation under Grants
+`retel-paper/` folder contains code and outputs from the paper. This
+work was supported by the U.S. National Science Foundation under Grants
 No. [SES-1921523](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1921523)
 and
 [DMS-2015552](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2015552).
