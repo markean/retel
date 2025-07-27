@@ -2,24 +2,31 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "retel",
-  "description": "Implements the regularized exponentially tilted empirical likelihood method. Details of the methods are given in Kim, MacEachern, and Peruggia (2023) <doi:10.48550/arXiv.2312.17015>. This work was supported by the U.S. National Science Foundation under Grants No. SES-1921523 and DMS-2015552.",
+  "description": "Implements the regularized exponentially tilted empirical likelihood method. Details of the method are given in Kim, MacEachern, and Peruggia (2023) <doi:10.48550/arXiv.2312.17015>. This work was supported by the U.S. National Science Foundation under Grants No. SES-1921523 and DMS-2015552.",
   "name": "retel: Regularized Exponentially Tilted Empirical Likelihood",
   "codeRepository": "https://github.com/markean/retel",
   "issueTracker": "https://github.com/markean/retel/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
       "givenName": "Eunseop",
       "familyName": "Kim",
-      "email": "markean@pm.me"
+      "email": "markean@pm.me",
+      "@id": "https://orcid.org/0009-0000-2138-788X"
     }
   ],
   "contributor": [
@@ -49,7 +56,8 @@
       "@type": "Person",
       "givenName": "Eunseop",
       "familyName": "Kim",
-      "email": "markean@pm.me"
+      "email": "markean@pm.me",
+      "@id": "https://orcid.org/0009-0000-2138-788X"
     }
   ],
   "maintainer": [
@@ -57,7 +65,8 @@
       "@type": "Person",
       "givenName": "Eunseop",
       "familyName": "Kim",
-      "email": "markean@pm.me"
+      "email": "markean@pm.me",
+      "@id": "https://orcid.org/0009-0000-2138-788X"
     }
   ],
   "softwareSuggestions": [
@@ -143,7 +152,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "604960.942KB",
+  "fileSize": "558993.597KB",
   "releaseNotes": "https://github.com/markean/retel/blob/master/NEWS.md",
   "readme": "https://github.com/markean/retel/blob/main/README.md",
   "contIntegration": "https://github.com/markean/retel/actions/workflows/R-CMD-check.yaml",
