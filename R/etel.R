@@ -13,7 +13,7 @@
 #' @param par
 #'   A numeric vector of parameter values to be tested.
 #' @param opts
-#'   An optional list with optimization options for [nloptr()].
+#'   An optional list with optimization options for [nloptr::nloptr()].
 #'   Defaults to `NULL`.
 #' @return
 #'   A single numeric value representing the log-likelihood ratio. It contains

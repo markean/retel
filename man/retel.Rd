@@ -30,7 +30,7 @@ information.}
 empirical likelihood. It must be either \code{"full"} or \code{"reduced"}. Defaults
 to \code{"full"}.  See 'Details' for more information.}
 
-\item{opts}{An optional list with optimization options for \code{\link[=nloptr]{nloptr()}}.
+\item{opts}{An optional list with optimization options for \code{\link[nloptr:nloptr]{nloptr::nloptr()}}.
 Defaults to \code{NULL}.}
 }
 \value{

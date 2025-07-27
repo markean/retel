@@ -22,7 +22,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Eunseop Kim \email{markean@pm.me} [copyright holder]
+\strong{Maintainer}: Eunseop Kim \email{markean@pm.me} (\href{https://orcid.org/0009-0000-2138-788X}{ORCID}) [copyright holder]
 
 Other contributors:
 \itemize{

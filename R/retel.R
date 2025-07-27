@@ -26,7 +26,7 @@
 #'   empirical likelihood. It must be either `"full"` or `"reduced"`. Defaults
 #'   to `"full"`.  See 'Details' for more information.
 #' @param opts
-#'   An optional list with optimization options for [nloptr()].
+#'   An optional list with optimization options for [nloptr::nloptr()].
 #'   Defaults to `NULL`.
 #' @details
 #'   Let \eqn{\{\bm{X}_i\}_{i = 1}^n} denote independent \eqn{d_x}-dimensional

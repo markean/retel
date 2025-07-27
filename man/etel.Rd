@@ -17,7 +17,7 @@ greater than the number of columns.}
 
 \item{par}{A numeric vector of parameter values to be tested.}
 
-\item{opts}{An optional list with optimization options for \code{\link[=nloptr]{nloptr()}}.
+\item{opts}{An optional list with optimization options for \code{\link[nloptr:nloptr]{nloptr::nloptr()}}.
 Defaults to \code{NULL}.}
 }
 \value{
