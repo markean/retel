@@ -26,8 +26,8 @@ providing data and parameters:
 - `retel()` computes regularized exponentially tilted empirical
   likelihood with regularization parameters.
 
-This repository accompanies the research paper titled ‘Regularized
-Exponentially Tilted Empirical Likelihood for Bayesian Inference,’
+This repository accompanies the research paper titled "Regularized
+Exponentially Tilted Empirical Likelihood for Bayesian Inference,"
 available on [arXiv](https://arxiv.org/abs/2312.17015). The
 `retel-paper/` folder contains code and outputs from the paper. This
 work was supported by the U.S. National Science Foundation under Grants
